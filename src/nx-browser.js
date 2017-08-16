@@ -1,28 +1,29 @@
-(function(global) {
+(function () {
+  var global = global || window || this;
   var nx = global.nx || require('next-js-core2');
   var navigator = global.navigator;
   var UA = navigator.userAgent;
-	var docStyle = document.documentElement.style;
+  var docStyle = document.documentElement.style;
   var toString = Object.prototype.toString;
   var OBJECT_OPERA = '[object Opera]';
   var JS_PREFIX_MAP = {
-		trident: 'ms',
-		gecko: 'Moz',
-		webkit: 'Webkit',
-		presto: 'O'
-	};
+    trident: 'ms',
+    gecko: 'Moz',
+    webkit: 'Webkit',
+    presto: 'O'
+  };
 
 
   var CSS_PREFIX_MAP = {
-		trident: '-ms-',
-		gecko: '-moz-',
-		webkit: '-webkit-',
-		presto: '-o-'
-	};
+    trident: '-ms-',
+    gecko: '-moz-',
+    webkit: '-webkit-',
+    presto: '-o-'
+  };
 
   var Browser = nx.declare('nx.Browser', {
     statics: {
-      init: function() {
+      init: function () {
         nx.mix(this, {
           mobile: !!UA.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
           ios: !!UA.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
@@ -34,7 +35,7 @@
           qq: UA.match(/\sQQ/i) == " qq", //是否QQ
         });
       },
-      engine: function(){
+      engine: function () {
         if (global.opera && toString.call(opera) === OBJECT_OPERA) {
           return 'presto';
         } else if ('MozAppearance' in docStyle) {
@@ -43,17 +44,17 @@
           return 'webkit';
         } else if (typeof navigator.cpuClass === 'string') {
           return 'trident';
-        }else{
+        } else {
           return 'unknown';
         }
       },
-      language: function(){
+      language: function () {
         return (navigator.browserLanguage || navigator.language).toLowerCase();
       },
-      jsPrefix: function(){
+      jsPrefix: function () {
         return JS_PREFIX_MAP[Browser.engine()];
       },
-      cssPrefix: function(){
+      cssPrefix: function () {
         return CSS_PREFIX_MAP[Browser.engine()];
       }
     }
@@ -63,4 +64,4 @@
     module.exports = Browser;
   }
 
-}(this));
+}());
