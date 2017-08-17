@@ -1,6 +1,6 @@
 (function () {
   var global = global || window || this;
-  var nx = global.nx || require('nx-js-core');
+  var nx = global.nx || require('next-js-core2');
   var navigator = global.navigator;
   var UA = navigator.userAgent;
   var docStyle = document.documentElement.style;

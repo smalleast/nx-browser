@@ -27,10 +27,8 @@
     "gulp-load-plugins": "^1.2.0",
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^2.0.0",
+    "next-js-core2": "github:smalleast/next-js-core2",
     "yargs": "^4.7.1"
   },
-  "dependencies": {
-    "next-js-core2": "github:afeiship/next-js-core2",
-    "nx-js-core": "github:smalleast/nx-js-core"
-  }
+  "dependencies": {}
 }
